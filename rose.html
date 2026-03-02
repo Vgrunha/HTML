@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roseane Arruda | Terapeuta de Mulheres</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #c4725a;
+      --rose-light: #e8a590;
+      --cream: #fdf6ef;
+      --dark: #1a1410;
+      --warm-grey: #8a7d74;
+      --green: #2d5a44;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 20px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(253,246,239,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(196,114,90,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600; letter-spacing: 0.05em;
+      color: var(--rose);
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--warm-grey); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 60px 80px 80px;
+    }
+    .hero-tag {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--rose); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 300; line-height: 1.05;
+      margin-bottom: 28px;
+    }
+    .hero-title em { font-style: italic; color: var(--rose); }
+    .hero-desc {
+      font-size: 1rem; line-height: 1.8; color: var(--warm-grey);
+      max-width: 420px; margin-bottom: 44px;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--rose); color: white;
+      padding: 16px 36px; border-radius: 50px;
+      text-decoration: none; font-size: 0.85rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: all 0.3s; width: fit-content;
+    }
+    .hero-cta:hover { background: var(--green); transform: translateY(-2px); }
+    .hero-right {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #e8d5c8 0%, #c4725a33 100%);
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c4725a' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-quote {
+      position: absolute; top: 40px; right: 40px;
+      background: white; border-radius: 16px;
+      padding: 20px 24px; max-width: 200px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem; font-style: italic; color: var(--rose);
+      line-height: 1.5;
+    }
+
+    .sobre {
+      padding: 120px 80px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .sobre-img { position: relative; }
+    .sobre-img-inner {
+      width: 100%; aspect-ratio: 4/5; border-radius: 20px;
+      background: linear-gradient(160deg, #c4725a22, #2d5a4422);
+      overflow: hidden; position: relative;
+    }
+    .sobre-img-deco {
+      position: absolute; bottom: -20px; right: -20px;
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 2px solid var(--rose); opacity: 0.3;
+    }
+    .sobre-img-deco2 {
+      position: absolute; top: -15px; left: -15px;
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--rose-light); opacity: 0.2;
+    }
+    .sobre-content { padding: 20px 0; }
+    .section-label {
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300; line-height: 1.2; margin-bottom: 28px;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .sobre-text {
+      font-size: 0.95rem; line-height: 1.9; color: var(--warm-grey);
+      margin-bottom: 20px;
+    }
+    .sobre-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .tag {
+      padding: 8px 20px; border-radius: 50px;
+      border: 1px solid var(--rose-light);
+      font-size: 0.8rem; color: var(--rose);
+    }
+
+    .stats {
+      background: var(--dark);
+      padding: 80px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-weight: 300; color: var(--rose-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-top: 8px;
+    }
+
+    .servicos { padding: 120px 80px; }
+    .servicos-header { text-align: center; margin-bottom: 70px; }
+    .servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .servico-card {
+      background: white; border-radius: 20px;
+      padding: 44px 36px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.04);
+      transition: all 0.4s; position: relative; overflow: hidden;
+    }
+    .servico-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--rose);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .servico-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .servico-card:hover::before { transform: scaleX(1); }
+    .servico-icon { font-size: 2rem; margin-bottom: 20px; }
+    .servico-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400; margin-bottom: 14px;
+    }
+    .servico-desc { font-size: 0.88rem; line-height: 1.8; color: var(--warm-grey); }
+
+    .livro {
+      margin: 0 80px 120px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--green) 0%, #1a3d2b 100%);
+      padding: 80px;
+      display: grid; grid-template-columns: 1fr auto; gap: 60px;
+      align-items: center; overflow: hidden; position: relative;
+    }
+    .livro::before {
+      content: '"';
+      position: absolute; right: 200px; top: -20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20rem; color: rgba(255,255,255,0.04);
+      line-height: 1; pointer-events: none;
+    }
+    .livro-label {
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--rose-light); margin-bottom: 16px;
+    }
+    .livro-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 300; color: white; line-height: 1.1; margin-bottom: 20px;
+    }
+    .livro-title em { font-style: italic; color: var(--rose-light); }
+    .livro-desc { font-size: 0.93rem; line-height: 1.8; color: rgba(255,255,255,0.65); max-width: 500px; }
+    .livro-cover {
+      width: 180px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--rose), #8b3a22);
+      border-radius: 6px 12px 12px 6px;
+      aspect-ratio: 2/3;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: -15px 15px 40px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .livro-cover::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 16px; background: rgba(0,0,0,0.2); border-radius: 6px 0 0 6px;
+    }
+    .livro-cover-text {
+      font-family: 'Cormorant Garamond', serif;
+      color: rgba(255,255,255,0.9); text-align: center; padding: 20px;
+      font-size: 1.1rem; line-height: 1.4; font-style: italic;
+    }
+
+    .cta-section {
+      padding: 120px 80px; text-align: center;
+      background: white;
+    }
+    .cta-section .section-title { font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 20px; }
+    .cta-desc { font-size: 1rem; color: var(--warm-grey); margin-bottom: 44px; line-height: 1.8; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--rose); color: white;
+      padding: 18px 48px; border-radius: 50px;
+      text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .cta-btn:hover { background: var(--green); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(196,114,90,0.3); }
+
+    footer {
+      background: var(--dark); color: rgba(255,255,255,0.5);
+      padding: 60px 80px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; color: var(--rose-light);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 0.8rem; color: rgba(255,255,255,0.4);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--rose-light); }
+    .footer-copy { font-size: 0.78rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-tag { animation: fadeUp 0.6s ease both; }
+    .hero-title { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-desc { animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-cta { animation: fadeUp 0.6s 0.3s ease both; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 400px; }
+      .hero-left { padding: 60px 40px; }
+      .sobre, .stats { grid-template-columns: 1fr; padding: 80px 40px; }
+      .servicos { padding: 80px 40px; }
+      .servicos-grid { grid-template-columns: 1fr; }
+      .livro { margin: 0 40px 80px; padding: 60px 40px; grid-template-columns: 1fr; }
+      .livro-cover { width: 140px; }
+      .cta-section, footer { padding: 80px 40px; }
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Rose Arruda</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#livro">Livro</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Terapeuta de Mulheres</div>
+    <h1 class="hero-title">
+      Cuide de quem<br>
+      <em>cuida de todos</em>
+    </h1>
+    <p class="hero-desc">
+      Especialista em fortalecimento emocional feminino. Autoestima, limites e recomeços — para mulheres que decidem se colocar em primeiro lugar.
+    </p>
+    <a href="#contato" class="hero-cta">
+      Agendar Atendimento
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-quote">
+      "Devagar você vai, desde que você não pare."
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="sobre-img">
+    <div class="sobre-img-inner">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;font-family:'Cormorant Garamond',serif;color:var(--rose);font-size:1.2rem;font-style:italic;opacity:0.5;">
+          🌻 rose.arrudaaa
+        </div>
+      </div>
+    </div>
+    <div class="sobre-img-deco"></div>
+    <div class="sobre-img-deco2"></div>
+  </div>
+  <div class="sobre-content">
+    <div class="section-label">Quem sou eu</div>
+    <h2 class="section-title">Roseane Arruda —<br><em>muito além da terapia</em></h2>
+    <p class="sobre-text">
+      Formada em Marketing e Pós-Graduada em Neurociência, sou terapeuta especializada no universo feminino. Acredito que toda mulher merece um espaço seguro para se reconectar consigo mesma.
+    </p>
+    <p class="sobre-text">
+      Mãe, escritora e terapeuta — ajudo mulheres a reconstruírem sua autoestima, estabelecerem limites saudáveis e darem novos recomeços com força e consciência.
+    </p>
+    <div class="sobre-tags">
+      <span class="tag">🌻 Autoestima</span>
+      <span class="tag">🧠 Neurociência</span>
+      <span class="tag">💛 Limites</span>
+      <span class="tag">✨ Recomeço</span>
+      <span class="tag">💻 Online</span>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat-item">
+    <div class="stat-num">52</div>
+    <div class="stat-label">Publicações</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">135</div>
+    <div class="stat-label">Seguidores</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100<span style="font-size:2rem">%</span></div>
+    <div class="stat-label">Atendimento Online</div>
+  </div>
+</section>
+
+<section class="servicos" id="servicos">
+  <div class="servicos-header">
+    <div class="section-label">O que ofereço</div>
+    <h2 class="section-title">Serviços <em>para você</em></h2>
+  </div>
+  <div class="servicos-grid">
+    <div class="servico-card">
+      <div class="servico-icon">🌻</div>
+      <h3 class="servico-title">Fortalecimento da Autoestima</h3>
+      <p class="servico-desc">Sessões individuais voltadas para reconstruir a relação que você tem consigo mesma, com amor e neurociência.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icon">🧠</div>
+      <h3 class="servico-title">Fortalecimento Emocional</h3>
+      <p class="servico-desc">Trabalho especializado para mulheres que desejam desenvolver resiliência, autoconhecimento e equilíbrio emocional.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icon">💻</div>
+      <h3 class="servico-title">Atendimento Online</h3>
+      <p class="servico-desc">Sessões no conforto da sua casa. Flexibilidade de horário para mulheres com agenda cheia que não param por ninguém.</p>
+    </div>
+  </div>
+</section>
+
+<section class="livro" id="livro">
+  <div class="livro-content">
+    <div class="livro-label">Meu Livro</div>
+    <h2 class="livro-title">"Valentina" —<br><em>Caminhos de Amor e Recomeço</em></h2>
+    <p class="livro-desc">
+      Uma obra que toca o coração de toda mulher que já precisou recomeçar. Uma jornada de amor, autoconhecimento e renovação.
+    </p>
+  </div>
+  <div class="livro-cover">
+    <div class="livro-cover-text">Valentina<br><br>Caminhos de Amor e Recomeço</div>
+  </div>
+</section>
+
+<section class="cta-section" id="contato">
+  <div class="section-label">Vamos começar?</div>
+  <h2 class="section-title">Você <em>merece</em> cuidado</h2>
+  <p class="cta-desc">Dê o primeiro passo. Agende sua sessão online e comece sua jornada de transformação.</p>
+  <a href="https://caminharcomroseane.my.canva.site" target="_blank" class="cta-btn">
+    Agendar Sessão
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</section>
+
+<footer>
+  <div class="footer-brand">Roseane Arruda</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/rose.arrudaaa" target="_blank">Instagram</a>
+    <a href="https://caminharcomroseane.my.canva.site" target="_blank">Site</a>
+  </div>
+  <div class="footer-copy">© 2026 Roseane Arruda. Todos os direitos reservados.</div>
+</footer>
+
+</body>
+</html>
